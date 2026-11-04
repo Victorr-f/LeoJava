@@ -1,0 +1,453 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DOM - Document Object Model</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f5f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #1e3a8a;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: #93c5fd;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        section {
+            background-color: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px #00000015;
+        }
+
+        h2 {
+            color: #1e3a8a;
+            margin-bottom: 15px;
+        }
+
+        .destaque {
+            background-color: #dbeafe;
+            padding: 12px;
+            border-left: 5px solid #2563eb;
+            margin-top: 10px;
+        }
+
+        .caixas {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .caixa {
+            flex: 1;
+            min-width: 220px;
+            background-color: #eff6ff;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #bfdbfe;
+            cursor: pointer;
+        }
+
+        .caixa h3 {
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 12px;
+        }
+
+        .principal {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        .secundario {
+            background-color: #64748b;
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        input, select, textarea {
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        form button {
+            background-color: #16a34a;
+            color: white;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            text-align: left;
+        }
+
+        th {
+            background-color: #1e3a8a;
+            color: white;
+        }
+
+        footer {
+            background-color: #1e3a8a;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .ativo {
+            background-color: #fef08a;
+            border: 2px solid #eab308;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+
+        <h1>Fundação de Ensino de Contagem</h1>
+
+        <p>Curso de Frontend</p>
+
+        <nav>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#cursos">Cursos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <main id="inicio">
+
+        <section>
+
+            <h2>Manipulação do DOM</h2>
+
+            <p>Este é um parágrafo que será utilizado nos exercícios.</p>
+
+            <p class="destaque">
+                Este é um texto com a classe destaque.
+            </p>
+
+        </section>
+
+        <section class="caixas">
+
+            <div class="caixa">
+
+                <h3>Caixa #1</h3>
+
+                <p>Conteúdo da 1ª caixa.</p>
+
+                <button class="principal">
+                    Botão principal
+                </button>
+
+                <button class="secundario">
+                    Botão secundário
+                </button>
+
+            </div>
+
+            <div class="caixa">
+
+                <h3>Caixa #2</h3>
+
+                <p>Conteúdo da 2ª caixa.</p>
+
+                <button class="principal">
+                    Botão principal
+                </button>
+
+                <button class="secundario">
+                    Botão secundário
+                </button>
+
+            </div>
+
+            <div class="caixa">
+
+                <h3>Caixa #3</h3>
+
+                <p>Conteúdo da 3ª caixa.</p>
+
+                <button class="principal">
+                    Botão principal
+                </button>
+
+                <button class="secundario">
+                    Botão secundário
+                </button>
+
+            </div>
+
+        </section>
+
+        <section id="cursos">
+
+            <h2>Lista de tecnologias</h2>
+
+            <ul id="listaTecnologias">
+                <li>CSS</li>
+                <li>HTML</li>
+                <li>PHP</li>
+                <li>JavaScript</li>
+                <li>TypeScript</li>
+                <li>Rust</li>
+            </ul>
+
+        </section>
+
+        <section>
+
+            <h2>Imagem</h2>
+
+            <img
+                src="https://placehold.co/400x200/2563eb/ffffff?text=Curso+Frontend"
+                alt="Imagem ilustrativa do curso de Frontend"
+            >
+
+        </section>
+
+        <section id="contato">
+
+            <h2>Formulário</h2>
+
+            <form id="formulario">
+
+                <label for="nome">Nome:</label>
+
+                <input
+                    type="text"
+                    id="nome"
+                    placeholder="Digite seu nome"
+                >
+
+                <label for="email">E-mail:</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Digite seu e-mail"
+                >
+
+                <label for="curso">Curso:</label>
+
+                <select id="curso">
+
+                    <option value="">Selecione</option>
+                    <option value="HTML">HTML</option>
+                    <option value="CSS">CSS</option>
+                    <option value="JavaScript">JavaScript</option>
+
+                </select>
+
+                <label for="comentario">Comentário:</label>
+
+                <textarea
+                    id="comentario"
+                    placeholder="Digite seu comentário"
+                ></textarea>
+
+                <button type="submit">Enviar</button>
+
+            </form>
+
+        </section>
+
+        <section>
+
+            <h2>Tabela de alunos</h2>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Idade</th>
+                        <th>Curso</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Victor</td>
+                        <td>16</td>
+                        <td>HTML</td>
+                    </tr>
+
+                    <tr>
+                        <td>Mwdjina</td>
+                        <td>17</td>
+                        <td>CSS</td>
+                    </tr>
+
+                    <tr>
+                        <td>Fabio</td>
+                        <td>16</td>
+                        <td>JavaScript</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+    <footer>
+
+        <p>Curso de Frontend - Manipulação do DOM</p>
+
+    </footer>
+
+    <script>
+
+        const titulo = document.getElementById("inicio");
+
+        console.log("getElementById:", titulo);
+
+        const destaques = document.getElementsByClassName("destaque");
+
+        console.log("getElementsByClassName:", destaques);
+
+        const paragrafos = document.getElementsByTagName("p");
+
+        console.log("getElementsByTagName:", paragrafos);
+
+        const primeiroTitulo = document.querySelector("h2");
+
+        console.log("querySelector:", primeiroTitulo);
+
+        const caixas = document.querySelectorAll(".caixa");
+
+        console.log("querySelectorAll:", caixas);
+
+        primeiroTitulo.innerHTML = "Manipulação do DOM com JavaScript";
+
+        const botoes = document.querySelectorAll(".principal");
+
+        botoes.forEach(function(botao) {
+
+            botao.addEventListener("click", function() {
+
+                alert("Você clicou no botão principal!");
+
+            });
+
+        });
+
+        caixas.forEach(function(caixa) {
+
+            caixa.addEventListener("click", function(event) {
+
+                if (event.target.tagName === "BUTTON") {
+                    return;
+                }
+
+                caixa.classList.toggle("ativo");
+
+            });
+
+        });
+
+        const novoParagrafo = document.createElement("p");
+
+        novoParagrafo.innerHTML =
+            "Este parágrafo foi criado com JavaScript!";
+
+        document.querySelector("main").appendChild(novoParagrafo);
+
+        const formulario = document.getElementById("formulario");
+
+        formulario.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            const nome = document.getElementById("nome").value;
+
+            alert("Olá, " + nome + "! Formulário enviado com sucesso.");
+
+        });
+
+    </script>
+
+</body>
+
+</html>
